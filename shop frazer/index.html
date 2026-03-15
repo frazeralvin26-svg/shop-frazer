@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Shop Frazer</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>Shop Frazer</h2>
+
+<div>
+
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+</nav>
+
+<header>
+
+<h1>Welcome to Shop Frazer</h1>
+
+<p>Your trusted online shop for fashion, gadgets and more.</p>
+
+</header>
+
+<section class="products" id="products"></section>
+
+
+<section style="text-align:center;padding:40px">
+
+<h2>Order Product</h2>
+
+<input id="product" placeholder="Selected product">
+
+<br>
+
+<button onclick="purchase()">Purchase</button>
+
+<p id="msg"></p>
+
+</section>
+
+
+<section id="about" style="text-align:center;padding:40px">
+
+<h2>About</h2>
+
+<p>
+
+Shop Frazer is an online store where customers can buy shoes,
+clothes, electronics and more.
+
+</p>
+
+</section>
+
+
+<section id="contact" style="text-align:center;padding:40px">
+
+<h2>Contact</h2>
+
+<p>Phone: 08893 69587</p>
+
+</section>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let container = document.getElementById("products");
+
+products.forEach(p=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<img src="${p.image}">
+
+<h3>${p.name}</h3>
+
+<p>$${p.price}</p>
+
+<button onclick="selectProduct('${p.name}')">Buy</button>
+
+</div>
+
+`
+
+});
+
+function selectProduct(name){
+
+document.getElementById("product").value=name;
+
+}
+
+function purchase(){
+
+document.getElementById("msg").innerText="Thank you for purchasing from Shop Frazer!"
+
+}
+
+</script>
+
+</body>
+</html>

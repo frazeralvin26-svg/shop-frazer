@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin - Shop Frazer</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1 style="text-align:center">Shop Frazer Admin</h1>
+
+<div style="text-align:center">
+
+<input id="password" placeholder="Enter Admin Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div id="panel" style="display:none;text-align:center;padding:40px">
+
+<h2>Post New Product</h2>
+
+<input id="name" placeholder="Product Name">
+
+<input id="price" placeholder="Price">
+
+<input id="image" placeholder="Image URL">
+
+<br>
+
+<button onclick="addProduct()">Post Product</button>
+
+</div>
+
+<script>
+
+function login(){
+
+let pass=document.getElementById("password").value;
+
+if(pass==="frazer123"){
+
+document.getElementById("panel").style.display="block";
+
+}else{
+
+alert("Wrong Password")
+
+}
+
+}
+
+function addProduct(){
+
+let name=document.getElementById("name").value;
+let price=document.getElementById("price").value;
+let image=document.getElementById("image").value;
+
+let products=JSON.parse(localStorage.getItem("products")) || [];
+
+products.push({name,price,image});
+
+localStorage.setItem("products",JSON.stringify(products));
+
+alert("Product Posted Successfully")
+
+}
+
+</script>
+
+</body>
+
+</html>
